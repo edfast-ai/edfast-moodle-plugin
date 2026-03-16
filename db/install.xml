@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="plagiarism/edfast/db" VERSION="2026021701" COMMENT="EdFast Moodle 4.5+ plagiarism plugin database schema">
+    <TABLES>
+        <TABLE NAME="plagiarism_edfast_submissions" COMMENT="Track EdFast submission analysis results">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+                <FIELD NAME="moodle_file_id" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Reference to Moodle file record"/>
+                <FIELD NAME="file_contenthash" TYPE="char" LENGTH="40" NOTNULL="false" COMMENT="SHA1 content hash of the file at submission time — used to detect re-submissions with new content"/>
+                <FIELD NAME="moodle_submission_id" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Moodle assignment submission ID"/>
+                <FIELD NAME="edfast_submission_id" TYPE="char" LENGTH="36" NOTNULL="true" COMMENT="UUID from EdFast service"/>
+                <FIELD NAME="item_id" TYPE="char" LENGTH="36" NOTNULL="false" COMMENT="EdFast Item UUID (for report links)"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="50" NOTNULL="true" DEFAULT="pending" COMMENT="pending, processing, completed, error"/>
+                <FIELD NAME="similarity_score" TYPE="float" NOTNULL="false" COMMENT="Plagiarism similarity percentage"/>
+                <FIELD NAME="ai_percentage" TYPE="float" NOTNULL="false" COMMENT="AI detection percentage"/>
+                <FIELD NAME="readability_score" TYPE="float" NOTNULL="false" COMMENT="Readability score"/>
+                <FIELD NAME="word_count" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Document word count"/>
+                <FIELD NAME="detected_language" TYPE="char" LENGTH="50" NOTNULL="false" COMMENT="Detected document language"/>
+                <FIELD NAME="processing_status" TYPE="char" LENGTH="50" NOTNULL="false" COMMENT="EdFast processing status"/>
+                <FIELD NAME="error_message" TYPE="text" NOTNULL="false" COMMENT="Error details if analysis failed"/>
+                <FIELD NAME="response_data" TYPE="text" NOTNULL="false" COMMENT="Full webhook response JSON"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="When submitted for analysis"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="When results received"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key"/>
+                <KEY NAME="edfast_id" TYPE="unique" FIELDS="edfast_submission_id" COMMENT="Unique EdFast submission ID"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="status" UNIQUE="false" FIELDS="status" COMMENT="For querying by status"/>
+                <INDEX NAME="file_id" UNIQUE="false" FIELDS="moodle_file_id" COMMENT="For querying by file"/>
+                <INDEX NAME="item_id" UNIQUE="false" FIELDS="item_id" COMMENT="For querying by EdFast item"/>
+                <INDEX NAME="timecreated" UNIQUE="false" FIELDS="timecreated" COMMENT="For chronological queries"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>
