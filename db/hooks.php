@@ -1,10 +1,26 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * EdFast Plagiarism Plugin - Moodle 5.x Hook Callbacks
+ * EdFast Plagiarism Plugin - Moodle Hook Callbacks
  *
- * Registers EdFast callbacks for Moodle 5.x hooks-based event system.
- * Moodle 5.0 deprecated the old plagiarism_*_assessable_uploaded() functions
- * in favour of hook callbacks defined here.
+ * Hook callbacks will be registered here once the assignment submission
+ * plugins publish stable hook classes. Currently the plugin uses the
+ * legacy event observer system defined in db/events.php, which is
+ * supported on all Moodle 4.x and 5.x versions.
  *
  * @package    plagiarism_edfast
  * @copyright  2026 EdFast
@@ -13,27 +29,4 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$callbacks = [
-    // File uploaded via assignment submission
-    [
-        'hook'     => \assignsubmission_file\hook\submission_created::class,
-        'callback' => \plagiarism_edfast\hook_callbacks::class . '::submission_file_created',
-        'priority' => 500,
-    ],
-    [
-        'hook'     => \assignsubmission_file\hook\submission_updated::class,
-        'callback' => \plagiarism_edfast\hook_callbacks::class . '::submission_file_updated',
-        'priority' => 500,
-    ],
-    // Online text submitted via assignment
-    [
-        'hook'     => \assignsubmission_onlinetext\hook\submission_created::class,
-        'callback' => \plagiarism_edfast\hook_callbacks::class . '::submission_onlinetext_created',
-        'priority' => 500,
-    ],
-    [
-        'hook'     => \assignsubmission_onlinetext\hook\submission_updated::class,
-        'callback' => \plagiarism_edfast\hook_callbacks::class . '::submission_onlinetext_updated',
-        'priority' => 500,
-    ],
-];
+$callbacks = [];
