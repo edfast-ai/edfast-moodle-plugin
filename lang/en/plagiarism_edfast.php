@@ -171,4 +171,3 @@ $string['token_expiration_minutes'] = 'Token Expiration Time (minutes)';
 $string['token_expiration_minutes_desc'] = 'How long tokens remain valid (5-120 minutes, default: 30)';
 $string['view_full_report'] = 'View Full Report';
 $string['auto_login_note'] = 'You are automatically logged in';
-

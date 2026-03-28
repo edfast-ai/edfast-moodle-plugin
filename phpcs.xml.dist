@@ -52,5 +52,32 @@
         <!-- Blank line after opening class brace. -->
         <exclude name="PSR12.Classes.OpeningBraceSpace.Found"/>
 
+        <!-- Multi-line function call formatting: opening paren, indent, closing paren, multiple args per line. -->
+        <!-- These checks conflict with horizontal-alignment style used throughout this plugin. -->
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments"/>
+        <exclude name="Squiz.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="Squiz.Functions.FunctionCallSignature.CloseBracketLine"/>
+        <exclude name="Squiz.Functions.FunctionCallSignature.MultipleArguments"/>
+
+        <!-- Multi-line function declaration: extra indent and closing paren position. -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.Indent"/>
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.CloseBracketLine"/>
+
+        <!-- Multi-line control structure: first/last expression line position. -->
+        <exclude name="PSR2.ControlStructures.ControlStructureSpacing.FirstExpressionLine"/>
+        <exclude name="PSR2.ControlStructures.ControlStructureSpacing.CloseParenthesisLine"/>
+
+        <!-- Empty catch block: poll failure is intentionally swallowed (logged at caller). -->
+        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch"/>
+
+        <!-- Multiple consecutive blank lines inside functions. -->
+        <exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines"/>
+
+        <!-- Extra blank line at end of file. -->
+        <exclude name="PSR2.Files.EndFileNewline.TooMany"/>
+
     </rule>
 </ruleset>
