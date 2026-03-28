@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * EdFast Moodle 4/5 Plagiarism Plugin - Language Strings (English)
  *
@@ -82,6 +97,57 @@ $string['error'] = 'Analysis error';
 // Capabilities
 $string['edfast:viewreport'] = 'View EdFast plagiarism reports';
 $string['edfast:checkfile'] = 'Submit files for plagiarism checking';
+$string['edfast:manage'] = 'Manage EdFast plagiarism plugin settings';
+
+// Events
+$string['event_analysis_complete'] = 'EdFast analysis complete';
+
+// Settings page labels
+$string['setting_apikey'] = 'API Key';
+$string['setting_apikey_id'] = 'API Key ID (UUID)';
+$string['setting_serverurl'] = 'Server URL';
+$string['setting_serverurl_help'] = 'The EdFast backend API base URL, e.g. https://api.edfast.ai/api/v1';
+$string['setting_frontendurl'] = 'Frontend URL';
+$string['setting_frontendurl_help'] = 'The EdFast web application URL used for report links, e.g. https://edfast.ai';
+$string['setting_webhooksecret'] = 'Webhook Secret';
+$string['setting_lti_platform_id'] = 'LTI 1.3 Platform ID (optional)';
+$string['setting_lti_platform_id_help'] = 'When set, report links use your LTI 1.3 session instead of the legacy JWT viewer-token. Paste the Platform UUID from EdFast → Institution Settings → LTI Platforms.';
+$string['setting_webhook_callback_url'] = 'Webhook Callback URL (optional)';
+$string['setting_webhook_callback_url_help'] = 'Override the webhook callback URL that EdFast uses to deliver results back to Moodle. Required for local/testing environments behind a tunnel (e.g. ngrok). Leave blank to use the default Moodle site URL.';
+$string['setting_report_heading'] = 'Report Access Settings';
+$string['setting_seamless_access'] = 'Enable Seamless Report Access (SSO)';
+$string['setting_seamless_access_help'] = 'When enabled, report links auto-log users into EdFast using the Webhook Secret as signing key.';
+$string['setting_report_expiry'] = 'Report Link Expiry (minutes)';
+$string['setting_report_expiry_help'] = 'How long a report link stays valid after it is opened (1-120 minutes). Default: 30.';
+$string['setting_developer_heading'] = 'Developer Settings';
+$string['setting_debug_mode'] = 'Debug Mode';
+
+// Webhook errors
+$string['webhook_invalid_json'] = 'Invalid JSON payload';
+$string['webhook_invalid_signature'] = 'Invalid signature';
+$string['webhook_submission_not_found'] = 'Submission not found';
+$string['webhook_success'] = 'Webhook processed successfully';
+
+// Health check
+$string['healthcheck_not_configured'] = 'EdFast not configured - API key or server URL missing';
+$string['healthcheck_reachable'] = 'EdFast service is reachable';
+$string['healthcheck_unreachable'] = 'EdFast service is not reachable - check API URL and network connectivity';
+
+// Privacy API
+$string['privacy:metadata:plagiarism_edfast_submissions'] = 'Information about user submissions sent to EdFast for plagiarism analysis.';
+$string['privacy:metadata:plagiarism_edfast_submissions:moodle_file_id'] = 'The Moodle file ID of the submitted document.';
+$string['privacy:metadata:plagiarism_edfast_submissions:moodle_submission_id'] = 'The Moodle assignment submission ID.';
+$string['privacy:metadata:plagiarism_edfast_submissions:edfast_submission_id'] = 'The unique submission ID assigned by EdFast.';
+$string['privacy:metadata:plagiarism_edfast_submissions:status'] = 'The analysis processing status.';
+$string['privacy:metadata:plagiarism_edfast_submissions:similarity_score'] = 'The plagiarism similarity percentage.';
+$string['privacy:metadata:plagiarism_edfast_submissions:ai_percentage'] = 'The AI-generated content percentage.';
+$string['privacy:metadata:plagiarism_edfast_submissions:timecreated'] = 'When the submission was sent for analysis.';
+$string['privacy:metadata:plagiarism_edfast_submissions:timemodified'] = 'When the analysis result was last updated.';
+$string['privacy:metadata:edfast_server'] = 'The EdFast cloud service receives document content for plagiarism and AI analysis.';
+$string['privacy:metadata:edfast_server:file_content'] = 'The content of the submitted document.';
+$string['privacy:metadata:edfast_server:file_name'] = 'The filename of the submitted document.';
+$string['privacy:metadata:edfast_server:moodle_user_email'] = 'The email address of the submitting user.';
+$string['privacy:metadata:edfast_server:moodle_user_name'] = 'The full name of the submitting user.';
 
 // Errors
 $string['error_api_key_missing'] = 'EdFast API key not configured. Contact your administrator.';

@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * EdFast Moodle 4.0+ Plagiarism Plugin - Webhook Receiver
  *
@@ -14,7 +29,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define('AJAX_SCRIPT', true);
+// Machine-to-machine endpoint — no Moodle session/cookie needed.
+// Authentication is via HMAC-SHA256 signature in X-EdFast-Signature header.
+define('NO_MOODLE_COOKIES', true);
 
 require(__DIR__ . '/../../config.php');
 
@@ -27,7 +44,7 @@ try {
 
     if (!$data) {
         http_response_code(400);
-        echo json_encode(array('error' => 'Invalid JSON payload'));
+        echo json_encode(array('error' => get_string('webhook_invalid_json', 'plagiarism_edfast')));
         exit;
     }
 
@@ -37,7 +54,7 @@ try {
 
     if (!$api_client->verify_webhook_signature($payload, $signature)) {
         http_response_code(403);
-        echo json_encode(array('error' => 'Invalid signature'));
+        echo json_encode(array('error' => get_string('webhook_invalid_signature', 'plagiarism_edfast')));
         exit;
     }
 
@@ -70,7 +87,7 @@ try {
 
     if (!$submission) {
         http_response_code(404);
-        echo json_encode(array('error' => 'Submission not found', 'moodle_submission_id' => $data['moodle_submission_id'] ?? null, 'item_id' => $data['item_id'] ?? null));
+        echo json_encode(array('error' => get_string('webhook_submission_not_found', 'plagiarism_edfast'), 'moodle_submission_id' => $data['moodle_submission_id'] ?? null, 'item_id' => $data['item_id'] ?? null));
         exit;
     }
 
@@ -112,7 +129,7 @@ try {
     http_response_code(200);
     echo json_encode(array(
         'success' => true,
-        'message' => 'Webhook processed successfully',
+        'message' => get_string('webhook_success', 'plagiarism_edfast'),
         'submission_id' => $submission->id
     ));
 

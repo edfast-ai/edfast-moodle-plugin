@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * EdFast Moodle 4/5 Plagiarism Plugin - Language Strings (Traditional Chinese)
  *
@@ -82,6 +97,57 @@ $string['error'] = '分析錯誤';
 // 權限
 $string['edfast:viewreport'] = '檢視 EdFast 抄襲報告';
 $string['edfast:checkfile'] = '提交檔案進行抄襲檢查';
+$string['edfast:manage'] = '管理 EdFast 抄襲偵測外掛設定';
+
+// 事件
+$string['event_analysis_complete'] = 'EdFast 分析完成';
+
+// 設定頁面標籤
+$string['setting_apikey'] = 'API 金鑰';
+$string['setting_apikey_id'] = 'API 金鑰 ID（UUID）';
+$string['setting_serverurl'] = '伺服器 URL';
+$string['setting_serverurl_help'] = 'EdFast 後端 API 基礎 URL，例如 https://api.edfast.ai/api/v1';
+$string['setting_frontendurl'] = '前端 URL';
+$string['setting_frontendurl_help'] = '用於報告連結的 EdFast 網頁應用程式 URL，例如 https://edfast.ai';
+$string['setting_webhooksecret'] = 'Webhook 密鑰';
+$string['setting_lti_platform_id'] = 'LTI 1.3 平台 ID（選填）';
+$string['setting_lti_platform_id_help'] = '設定後，報告連結將使用 LTI 1.3 工作階段而非舊版 JWT 檢視 Token。請貼上 EdFast 機構設定 → LTI 平台中的平台 UUID。';
+$string['setting_webhook_callback_url'] = 'Webhook 回呼 URL（選填）';
+$string['setting_webhook_callback_url_help'] = '覆蓋 EdFast 用於將結果傳回 Moodle 的 Webhook 回呼 URL。本地/測試環境（如 ngrok）需要設定。留空則使用預設 Moodle 站點 URL。';
+$string['setting_report_heading'] = '報告存取設定';
+$string['setting_seamless_access'] = '啟用無縫報告存取（SSO）';
+$string['setting_seamless_access_help'] = '啟用後，報告連結將使用 Webhook 密鑰自動登入 EdFast。';
+$string['setting_report_expiry'] = '報告連結有效期（分鐘）';
+$string['setting_report_expiry_help'] = '報告連結開啟後的有效時間（1–120 分鐘），預設 30 分鐘。';
+$string['setting_developer_heading'] = '開發者設定';
+$string['setting_debug_mode'] = '偵錯模式';
+
+// Webhook 錯誤
+$string['webhook_invalid_json'] = '無效的 JSON 資料';
+$string['webhook_invalid_signature'] = '無效的簽章';
+$string['webhook_submission_not_found'] = '未找到繳交紀錄';
+$string['webhook_success'] = 'Webhook 處理成功';
+
+// 健康檢查
+$string['healthcheck_not_configured'] = 'EdFast 未設定 - 缺少 API 金鑰或伺服器 URL';
+$string['healthcheck_reachable'] = 'EdFast 服務可存取';
+$string['healthcheck_unreachable'] = 'EdFast 服務無法存取 - 請檢查 API URL 和網路連線';
+
+// 隱私 API
+$string['privacy:metadata:plagiarism_edfast_submissions'] = '傳送至 EdFast 進行抄襲分析的使用者繳交資訊。';
+$string['privacy:metadata:plagiarism_edfast_submissions:moodle_file_id'] = '繳交檔案的 Moodle 檔案 ID。';
+$string['privacy:metadata:plagiarism_edfast_submissions:moodle_submission_id'] = 'Moodle 作業繳交 ID。';
+$string['privacy:metadata:plagiarism_edfast_submissions:edfast_submission_id'] = 'EdFast 分配的唯一繳交 ID。';
+$string['privacy:metadata:plagiarism_edfast_submissions:status'] = '分析處理狀態。';
+$string['privacy:metadata:plagiarism_edfast_submissions:similarity_score'] = '抄襲相似度百分比。';
+$string['privacy:metadata:plagiarism_edfast_submissions:ai_percentage'] = 'AI 生成內容百分比。';
+$string['privacy:metadata:plagiarism_edfast_submissions:timecreated'] = '繳交分析的時間。';
+$string['privacy:metadata:plagiarism_edfast_submissions:timemodified'] = '分析結果最後更新時間。';
+$string['privacy:metadata:edfast_server'] = 'EdFast 雲端服務接收檔案內容進行抄襲和 AI 分析。';
+$string['privacy:metadata:edfast_server:file_content'] = '繳交檔案的內容。';
+$string['privacy:metadata:edfast_server:file_name'] = '繳交檔案的檔案名稱。';
+$string['privacy:metadata:edfast_server:moodle_user_email'] = '繳交使用者的電子郵件地址。';
+$string['privacy:metadata:edfast_server:moodle_user_name'] = '繳交使用者的全名。';
 
 // 錯誤訊息
 $string['error_api_key_missing'] = 'EdFast API 金鑰尚未設定，請聯繫管理員。';
