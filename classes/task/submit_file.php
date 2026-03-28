@@ -239,7 +239,11 @@ class submit_file extends \core\task\adhoc_task {
         $existing = $DB->get_record('plagiarism_edfast_submissions', ['moodle_file_id' => $file_id]);
         if ($existing) {
             if ($existing->file_contenthash !== null && $existing->file_contenthash === $content_hash) {
-                debugging('[EdFast] File already submitted with identical content (moodle_file_id=' . $file_id . ') — skipping', DEBUG_DEVELOPER);
+                debugging(
+                    '[EdFast] File already submitted with identical content (moodle_file_id=' .
+                    $file_id . ') — skipping',
+                    DEBUG_DEVELOPER
+                );
                 return;
             }
             $DB->delete_records('plagiarism_edfast_submissions', ['id' => $existing->id]);
@@ -264,7 +268,10 @@ class submit_file extends \core\task\adhoc_task {
             'webhook_url'          => $webhook_url,
         ];
 
-        debugging('[EdFast] Submitting file: ' . $filename . ' (submission ' . $submissionid . ', user ' . $userid . ')', DEBUG_DEVELOPER);
+        debugging(
+            '[EdFast] Submitting file: ' . $filename . ' (submission ' . $submissionid . ', user ' . $userid . ')',
+            DEBUG_DEVELOPER
+        );
         $result = $api_client->submit_for_analysis($request_data);
 
         if ($result) {
@@ -300,7 +307,11 @@ class submit_file extends \core\task\adhoc_task {
         global $DB;
 
         if (!class_exists('ZipArchive')) {
-            debugging('[EdFast] ZipArchive extension not available — cannot process ZIP: ' . $zip_file->get_filename(), DEBUG_DEVELOPER);
+            debugging(
+                '[EdFast] ZipArchive extension not available — cannot process ZIP: ' .
+                $zip_file->get_filename(),
+                DEBUG_DEVELOPER
+            );
             return;
         }
 

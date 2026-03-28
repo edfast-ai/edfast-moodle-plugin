@@ -355,7 +355,8 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
         // Similarity (shown if score is not null — backend omits it when feature disabled)
         if (!is_null($submission->similarity_score)) {
             $color = $this->get_percentage_color((float)$submission->similarity_score);
-            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;font-weight:600;font-size:0.88em;color:' . $color . ';"';
+            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;' .
+                'font-weight:600;font-size:0.88em;color:' . $color . ';"';
             $html .= '<tr>';
             $html .= '<td ' . $td_label . '>' . get_string('similarity', 'plagiarism_edfast') . ':</td>';
             $html .= '<td ' . $td_value . '>' . round($submission->similarity_score, 1) . '%</td>';
@@ -365,7 +366,8 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
         // AI % (shown if score is not null)
         if (!is_null($submission->ai_percentage)) {
             $color = $this->get_percentage_color((float)$submission->ai_percentage);
-            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;font-weight:600;font-size:0.88em;color:' . $color . ';"';
+            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;' .
+                'font-weight:600;font-size:0.88em;color:' . $color . ';"';
             $html .= '<tr>';
             $html .= '<td ' . $td_label . '>' . get_string('ai_percentage', 'plagiarism_edfast') . ':</td>';
             $html .= '<td ' . $td_value . '>' . round($submission->ai_percentage, 1) . '%</td>';
@@ -375,7 +377,8 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
         // Essay score / readability (shown if score is not null)
         if (!is_null($submission->readability_score) && $submission->readability_score !== '') {
             $color = $this->get_essay_score_color((float)$submission->readability_score);
-            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;font-weight:600;font-size:0.88em;color:' . $color . ';"';
+            $td_value = 'style="padding:2px 4px;vertical-align:middle;border:none;' .
+                'font-weight:600;font-size:0.88em;color:' . $color . ';"';
             $html .= '<tr>';
             $html .= '<td ' . $td_label . '>' . get_string('essay_score', 'plagiarism_edfast') . ':</td>';
             $html .= '<td ' . $td_value . '>' . round($submission->readability_score, 1) . '</td>';

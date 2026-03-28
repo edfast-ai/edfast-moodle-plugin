@@ -87,7 +87,11 @@ try {
 
     if (!$submission) {
         http_response_code(404);
-        echo json_encode(array('error' => get_string('webhook_submission_not_found', 'plagiarism_edfast'), 'moodle_submission_id' => $data['moodle_submission_id'] ?? null, 'item_id' => $data['item_id'] ?? null));
+        echo json_encode(array(
+            'error' => get_string('webhook_submission_not_found', 'plagiarism_edfast'),
+            'moodle_submission_id' => $data['moodle_submission_id'] ?? null,
+            'item_id' => $data['item_id'] ?? null,
+        ));
         exit;
     }
 
