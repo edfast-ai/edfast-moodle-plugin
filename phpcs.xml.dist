@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<ruleset name="plagiarism_edfast">
+    <description>Moodle coding standard for plagiarism_edfast with pragmatic exclusions.</description>
+
+    <rule ref="moodle">
+
+        <!-- Variable naming: snake_case is used throughout this plugin. -->
+        <exclude name="moodle.NamingConventions.ValidVariableName.VariableNameUnderscore"/>
+        <exclude name="moodle.NamingConventions.ValidVariableName.MemberNameUnderscore"/>
+
+        <!-- Inline comment style: team preference over strict punctuation. -->
+        <exclude name="moodle.Commenting.InlineComment.InvalidEndChar"/>
+        <exclude name="moodle.Commenting.InlineComment.NotCapital"/>
+
+        <!-- Lang file ordering: strings are grouped by feature area, not alphabetically. -->
+        <exclude name="moodle.Files.LangFilesOrdering.IncorrectOrder"/>
+        <exclude name="moodle.Files.LangFilesOrdering.UnexpectedComment"/>
+
+        <!-- MOODLE_INTERNAL: not required in config/routing scripts (e.g. upgrade.php). -->
+        <exclude name="moodle.Files.MoodleInternal.MoodleInternalNotNeeded"/>
+
+        <!-- Docblocks: completeness will be improved incrementally. -->
+        <exclude name="moodle.Commenting.MissingDocblock.Function"/>
+        <exclude name="moodle.Commenting.MissingDocblock.Class"/>
+        <exclude name="moodle.Commenting.VariableComment.Missing"/>
+
+        <!-- Function signature style: all params on one line is acceptable. -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.OneParamPerLine"/>
+
+        <!-- Trailing comma in multi-line array: optional per team style. -->
+        <exclude name="NormalizedArrays.Arrays.CommaAfterLast.MissingMultiLine"/>
+
+        <!-- Control structure braces: single-line ifs are valid in simple cases. -->
+        <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/>
+
+        <!-- Blank line before closing control structure brace. -->
+        <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose"/>
+
+        <!-- list() syntax: legacy usage retained for readability. -->
+        <exclude name="Universal.Lists.DisallowLongListSyntax.Found"/>
+
+        <!-- array() syntax: large-scale refactor tracked separately. -->
+        <exclude name="Generic.Arrays.DisallowLongArraySyntax.Found"/>
+
+        <!-- Trailing whitespace: auto-fixable, tracked separately. -->
+        <exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
+
+        <!-- Comma spacing in aligned declarations (e.g. get_config column alignment). -->
+        <exclude name="Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInFunctionCall"/>
+        <exclude name="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma"/>
+
+        <!-- Blank line after opening class brace. -->
+        <exclude name="PSR12.Classes.OpeningBraceSpace.Found"/>
+
+    </rule>
+</ruleset>

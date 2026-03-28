@@ -35,6 +35,8 @@ class event_observers {
     /**
      * Handle assignsubmission_file\event\assessable_uploaded
      * (Moodle 4.x primary entry point — fires when a file is staged)
+     *
+     * @param \core\event\base $event The Moodle event object
      */
     public static function assessable_uploaded(\core\event\base $event): void {
         if (!get_config('plagiarism_edfast', 'enabled')) {

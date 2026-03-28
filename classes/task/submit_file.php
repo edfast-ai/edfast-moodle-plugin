@@ -89,6 +89,13 @@ class submit_file extends \core\task\adhoc_task {
 
     /**
      * Process a single stored file by its file ID.
+     *
+     * @param object $data Task data containing file_id, cmid, submissionid, userid
+     * @param mixed $cm Course module object
+     * @param mixed $student Student user object
+     * @param string $apikey_id EdFast API key ID
+     * @param mixed $api_client LMS API client instance
+     * @param string $webhook_url Webhook callback URL
      */
     private function process_file(
         object $data, $cm, $student, string $apikey_id, $api_client, string $webhook_url
@@ -134,6 +141,13 @@ class submit_file extends \core\task\adhoc_task {
 
     /**
      * Process all files attached to a submission.
+     *
+     * @param object $data Task data containing contextid, cmid, submissionid, userid
+     * @param mixed $cm Course module object
+     * @param mixed $student Student user object
+     * @param string $apikey_id EdFast API key ID
+     * @param mixed $api_client LMS API client instance
+     * @param string $webhook_url Webhook callback URL
      */
     private function process_submission_files(
         object $data, $cm, $student, string $apikey_id, $api_client, string $webhook_url
@@ -188,6 +202,13 @@ class submit_file extends \core\task\adhoc_task {
 
     /**
      * Process an online text submission.
+     *
+     * @param object $data Task data containing submissionid, cmid, userid
+     * @param mixed $cm Course module object
+     * @param mixed $student Student user object
+     * @param string $apikey_id EdFast API key ID
+     * @param mixed $api_client LMS API client instance
+     * @param string $webhook_url Webhook callback URL
      */
     private function process_onlinetext(
         object $data, $cm, $student, string $apikey_id, $api_client, string $webhook_url
@@ -227,6 +248,20 @@ class submit_file extends \core\task\adhoc_task {
 
     /**
      * Submit a single file to EdFast and record the tracking entry.
+     *
+     * @param string $content File content as string
+     * @param string $filename Original filename
+     * @param int $file_id Moodle file ID
+     * @param string $content_hash SHA1 content hash for dedup
+     * @param int $file_size File size in bytes
+     * @param mixed $cm Course module object
+     * @param mixed $student Student user object
+     * @param int $cmid Course module ID
+     * @param int $submissionid Moodle submission ID
+     * @param int $userid Moodle user ID
+     * @param string $apikey_id EdFast API key ID
+     * @param mixed $api_client LMS API client instance
+     * @param string $webhook_url Webhook callback URL
      */
     private function submit_one_file(
         string $content, string $filename, int $file_id, string $content_hash,
@@ -299,6 +334,16 @@ class submit_file extends \core\task\adhoc_task {
 
     /**
      * Extract supported files from a ZIP archive and submit each one.
+     *
+     * @param mixed $zip_file Moodle stored_file object for the ZIP
+     * @param mixed $cm Course module object
+     * @param mixed $student Student user object
+     * @param int $cmid Course module ID
+     * @param int $submissionid Moodle submission ID
+     * @param int $userid Moodle user ID
+     * @param string $apikey_id EdFast API key ID
+     * @param mixed $api_client LMS API client instance
+     * @param string $webhook_url Webhook callback URL
      */
     private function process_zip_file(
         $zip_file, $cm, $student, int $cmid, int $submissionid,

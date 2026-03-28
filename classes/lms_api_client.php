@@ -260,6 +260,8 @@ class lms_api_client {
      *
      * @param string $item_id EdFast Item UUID
      * @param int $expiration_minutes Token expiration time in minutes (default: 30)
+     * @param string|null $requester_email Requester email for EdFast session lookup
+     * @param string|null $requester_role Requester role hint
      * @return string|false JWT token or false on error
      */
     public function generate_report_access_token(
@@ -368,6 +370,8 @@ class lms_api_client {
      * Falls back to the legacy JWT viewer-token link during the bridging period.
      *
      * @param string $item_id EdFast Item UUID (from webhook.item_id)
+     * @param string|null $requester_email Requester email for token generation
+     * @param string|null $requester_role Requester role hint
      * @return string|false Report link or false on error
      */
     public function get_report_link($item_id, $requester_email = null, $requester_role = null) {

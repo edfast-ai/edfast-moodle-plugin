@@ -139,6 +139,7 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
      * @param int $file_id Moodle file ID
      * @param string $edfast_submission_id EdFast submission ID
      * @param int $moodle_submission_id Moodle assignment submission ID
+     * @param string|null $file_contenthash File content hash for dedup detection
      */
     private function store_submission_record($file_id, $edfast_submission_id, $moodle_submission_id = 0, $file_contenthash = null) {
         global $DB;
