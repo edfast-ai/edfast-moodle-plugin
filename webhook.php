@@ -73,16 +73,22 @@ try {
 
     // Primary: item_id is unique and always present in the EdFast webhook payload
     if (!empty($data['item_id'])) {
-        $submission = $DB->get_record('plagiarism_edfast_submissions',
-                                      array('item_id' => $data['item_id']),
-                                      '*', IGNORE_MULTIPLE);
+        $submission = $DB->get_record(
+            'plagiarism_edfast_submissions',
+            array('item_id' => $data['item_id']),
+            '*',
+            IGNORE_MULTIPLE
+        );
     }
 
     // Fallback: moodle_submission_id (handles very old records that pre-date item_id storage)
     if (!$submission && !empty($data['moodle_submission_id'])) {
-        $submission = $DB->get_record('plagiarism_edfast_submissions',
-                                      array('moodle_submission_id' => $data['moodle_submission_id']),
-                                      '*', IGNORE_MULTIPLE);
+        $submission = $DB->get_record(
+            'plagiarism_edfast_submissions',
+            array('moodle_submission_id' => $data['moodle_submission_id']),
+            '*',
+            IGNORE_MULTIPLE
+        );
     }
 
     if (!$submission) {

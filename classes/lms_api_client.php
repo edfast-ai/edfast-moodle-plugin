@@ -265,7 +265,8 @@ class lms_api_client {
      * @return string|false JWT token or false on error
      */
     public function generate_report_access_token(
-            $item_id, $expiration_minutes = null, $requester_email = null, $requester_role = null) {
+        $item_id, $expiration_minutes = null, $requester_email = null, $requester_role = null
+    ) {
         global $CFG;
 
         // Use configured expiry, falling back to 30 minutes

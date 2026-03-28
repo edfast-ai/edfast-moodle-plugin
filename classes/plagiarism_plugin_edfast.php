@@ -246,10 +246,12 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
      */
     private function get_submission_status($file_id) {
         global $DB;
-        $submission = $DB->get_record('plagiarism_edfast_submissions',
-                              array('moodle_file_id' => $file_id),
-                              '*',
-                              IGNORE_MULTIPLE);
+        $submission = $DB->get_record(
+            'plagiarism_edfast_submissions',
+            array('moodle_file_id' => $file_id),
+            '*',
+            IGNORE_MULTIPLE
+        );
 
         if (!$submission) {
             return false;
@@ -428,12 +430,14 @@ class plagiarism_plugin_edfast extends plagiarism_plugin {
         global $DB;
         
         // Find failed submissions and retry
-        $failed = $DB->get_records('plagiarism_edfast_submissions', 
-                                   array('status' => 'error'),
-                                   'timemodified ASC',
-                                   '*',
-                                   0,
-                                   10);
+        $failed = $DB->get_records(
+            'plagiarism_edfast_submissions',
+            array('status' => 'error'),
+            'timemodified ASC',
+            '*',
+            0,
+            10
+        );
         
         foreach ($failed as $submission) {
             // Retry webhook callback

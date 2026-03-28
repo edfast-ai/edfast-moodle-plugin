@@ -114,8 +114,15 @@ class submit_file extends \core\task\adhoc_task {
 
         if ($ext === 'zip') {
             $this->process_zip_file(
-                $file, $cm, $student, (int)$data->cmid, (int)$data->submissionid,
-                (int)$data->userid, $apikey_id, $api_client, $webhook_url
+                $file,
+                $cm,
+                $student,
+                (int)$data->cmid,
+                (int)$data->submissionid,
+                (int)$data->userid,
+                $apikey_id,
+                $api_client,
+                $webhook_url
             );
             return;
         }
@@ -132,10 +139,19 @@ class submit_file extends \core\task\adhoc_task {
         }
 
         $this->submit_one_file(
-            $content, $file->get_filename(), (int)$file->get_id(),
-            $file->get_contenthash(), (int)$file->get_filesize(),
-            $cm, $student, (int)$data->cmid, (int)$data->submissionid,
-            (int)$data->userid, $apikey_id, $api_client, $webhook_url
+            $content,
+            $file->get_filename(),
+            (int)$file->get_id(),
+            $file->get_contenthash(),
+            (int)$file->get_filesize(),
+            $cm,
+            $student,
+            (int)$data->cmid,
+            (int)$data->submissionid,
+            (int)$data->userid,
+            $apikey_id,
+            $api_client,
+            $webhook_url
         );
     }
 
@@ -174,8 +190,15 @@ class submit_file extends \core\task\adhoc_task {
 
             if ($ext === 'zip') {
                 $this->process_zip_file(
-                    $file, $cm, $student, (int)$data->cmid, (int)$data->submissionid,
-                    (int)$data->userid, $apikey_id, $api_client, $webhook_url
+                    $file,
+                    $cm,
+                    $student,
+                    (int)$data->cmid,
+                    (int)$data->submissionid,
+                    (int)$data->userid,
+                    $apikey_id,
+                    $api_client,
+                    $webhook_url
                 );
                 continue;
             }
@@ -192,10 +215,19 @@ class submit_file extends \core\task\adhoc_task {
             }
 
             $this->submit_one_file(
-                $content, $file->get_filename(), (int)$file->get_id(),
-                $file->get_contenthash(), (int)$file->get_filesize(),
-                $cm, $student, (int)$data->cmid, (int)$data->submissionid,
-                (int)$data->userid, $apikey_id, $api_client, $webhook_url
+                $content,
+                $file->get_filename(),
+                (int)$file->get_id(),
+                $file->get_contenthash(),
+                (int)$file->get_filesize(),
+                $cm,
+                $student,
+                (int)$data->cmid,
+                (int)$data->submissionid,
+                (int)$data->userid,
+                $apikey_id,
+                $api_client,
+                $webhook_url
             );
         }
     }
@@ -240,9 +272,19 @@ class submit_file extends \core\task\adhoc_task {
 
         $filename = 'submission_' . $data->submissionid . '.txt';
         $this->submit_one_file(
-            $plain_text, $filename, $file_id, $content_hash, strlen($plain_text),
-            $cm, $student, (int)$data->cmid, (int)$data->submissionid,
-            (int)$data->userid, $apikey_id, $api_client, $webhook_url
+            $plain_text,
+            $filename,
+            $file_id,
+            $content_hash,
+            strlen($plain_text),
+            $cm,
+            $student,
+            (int)$data->cmid,
+            (int)$data->submissionid,
+            (int)$data->userid,
+            $apikey_id,
+            $api_client,
+            $webhook_url
         );
     }
 
@@ -376,10 +418,12 @@ class submit_file extends \core\task\adhoc_task {
                 $entry_name = $za->getNameIndex($i);
                 $base = basename($entry_name);
 
-                if (substr($entry_name, -1) === '/'
+                if (
+                    substr($entry_name, -1) === '/'
                     || strpos($entry_name, '__MACOSX/') !== false
                     || $base === '.DS_Store'
-                    || strncmp($base, '._', 2) === 0) {
+                    || strncmp($base, '._', 2) === 0
+                ) {
                     continue;
                 }
 
@@ -398,8 +442,19 @@ class submit_file extends \core\task\adhoc_task {
                 $filename = basename($entry_name);
 
                 $this->submit_one_file(
-                    $content, $filename, $virtual_file_id, $content_hash, strlen($content),
-                    $cm, $student, $cmid, $submissionid, $userid, $apikey_id, $api_client, $webhook_url
+                    $content,
+                    $filename,
+                    $virtual_file_id,
+                    $content_hash,
+                    strlen($content),
+                    $cm,
+                    $student,
+                    $cmid,
+                    $submissionid,
+                    $userid,
+                    $apikey_id,
+                    $api_client,
+                    $webhook_url
                 );
             }
             $za->close();
