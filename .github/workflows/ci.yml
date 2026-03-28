@@ -68,7 +68,7 @@ jobs:
 
       - name: Moodle Code Checker
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci phpcs --standard=./phpcs.xml.dist --max-warnings -1
+        run: moodle-plugin-ci phpcs --standard=./phpcs.xml.dist --max-warnings 0
 
       - name: Moodle PHPDoc Checker
         if: ${{ !cancelled() }}

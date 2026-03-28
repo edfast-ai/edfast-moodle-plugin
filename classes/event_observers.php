@@ -48,6 +48,8 @@ class event_observers {
     /**
      * Handle assignsubmission_file\event\submission_created
      * (Fires when the student clicks "Save submission" for the first time)
+     *
+     * @param \core\event\base $event The Moodle event object
      */
     public static function submission_created(\core\event\base $event): void {
         if (!get_config('plagiarism_edfast', 'enabled')) {
@@ -59,6 +61,8 @@ class event_observers {
     /**
      * Handle assignsubmission_file\event\submission_updated
      * (Fires when the student re-submits a file)
+     *
+     * @param \core\event\base $event The Moodle event object
      */
     public static function submission_updated(\core\event\base $event): void {
         if (!get_config('plagiarism_edfast', 'enabled')) {
